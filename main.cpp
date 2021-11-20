@@ -1,10 +1,11 @@
 #include <iostream>
 
 #include "utils/Lib-sockets.h"
+#include "utils/Lib-servers.h"
 
 using namespace std;
 
 int main()
 {
-    return 0;
+    HTTPServer server;
 }

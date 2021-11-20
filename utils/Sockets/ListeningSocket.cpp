@@ -7,6 +7,6 @@ ListeningSocket::ListeningSocket(int domain, int service, int protocol, int port
 }
 void ListeningSocket::start_listening()
 {
-    listening = listen(get_connection(), backlog);
+    listening = listen(get_sock(), backlog);
 }
 
