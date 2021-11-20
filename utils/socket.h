@@ -19,7 +19,10 @@ public:
 
     void test_connection(int item_to_test);
     struct sockaddr_in get_address();
+    // Getter
     int get_sock();
     int get_connection();
+    // Setter
+    void set_connection(int connection);
 };
 #endif // SOCKET_H

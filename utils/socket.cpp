@@ -1,4 +1,4 @@
-#include "socket.h"
+#include "Socket.h"
 
 Socket::Socket(int domain, int service, int protocol, int port, u_long interface)
 {
@@ -11,9 +11,6 @@ Socket::Socket(int domain, int service, int protocol, int port, u_long interface
     sock = socket(domain, service, protocol);
     test_connection(sock);
 
-    // establish network
-    // connection = connect_to_network(sock, address);
-    // test_connection(connection);
 }
 
 void Socket::test_connection(int item_to_test)
@@ -37,4 +34,8 @@ int Socket::get_sock()
 int Socket::get_connection()
 {
     return connection;
+}
+
+void Socket::set_connection(int connection) {
+    this->connection = connection;
 }
