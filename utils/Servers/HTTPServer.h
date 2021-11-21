@@ -8,6 +8,10 @@
 class HTTPServer : public Server
 {
 private:
+    /* Initialized HTTP config */
+    int port = 12346;
+    int backlog = 100000;
+
     char buffer[30000];
     int new_socket;
     void acceptor();
