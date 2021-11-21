@@ -5,24 +5,24 @@
 #include <string.h>
 
 #include "Server.h"
+
+
 class HTTPServer : public Server
 {
 private:
     /* Thread Pool */
     ThreadPool TP;
     
-    /* Initialized HTTP config */
-    int port = 12346;
-    int backlog = 100000;
+    /* Fixed HTTP Server Config */
+    int HTTP_Port = 12346;
+    int backlog = 10000;
 
     char buffer[30000];
-    int new_socket;
-    void acceptor();
-    void handler();
-    void responder();
+    void handler(int &arg);
 public:
     HTTPServer();
     void launch();
+
 };
 
 #endif // HTTPServer_H
