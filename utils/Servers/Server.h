@@ -9,6 +9,9 @@
 class Server
 {
 private:
+    /* Fixed Server Config */
+    int HTTP_Port = 12346;
+    int backlog = 10000;
     ListeningSocket *socket;
     virtual void acceptor() = 0;
     virtual void handler() = 0;

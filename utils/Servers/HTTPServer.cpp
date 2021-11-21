@@ -6,6 +6,14 @@ void HTTPServer::acceptor()
     struct sockaddr_in address = curr_socket->get_address();
     int addrlen  = sizeof(address);
     new_socket = accept(curr_socket->get_sock(), (struct sockaddr *)&address, (socklen_t *)&addrlen);
+    
+    if(new_socket < 0) 
+    {
+        std::cout << "new_socket = (" << new_socket << ")" << std::endl;
+        perror("in accept");
+        exit(EXIT_FAILURE);
+    }
+
     read(new_socket, buffer, 30000); // 30000 is the buffer_len
 }
 void HTTPServer::handler()
@@ -20,8 +28,9 @@ void HTTPServer::responder()
 }
 
 HTTPServer::HTTPServer()
-: Server(AF_INET, SOCK_STREAM, 0, 80, INADDR_ANY, 10) // port 80 for HTTP
+: Server(AF_INET, SOCK_STREAM, 0, 12346, INADDR_ANY, 10) // port 80 for HTTP
 {
+    get_socket()->start_listening();
     launch();
 }
 

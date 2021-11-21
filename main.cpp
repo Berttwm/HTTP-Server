@@ -8,4 +8,5 @@ using namespace std;
 int main()
 {
     HTTPServer server;
+    typedef unsigned long a;
 }
