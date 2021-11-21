@@ -5,6 +5,7 @@
 #include <string.h>
 
 #include "Server.h"
+#include "HTTP_Tools/HTTP_Request.h"
 
 
 class HTTPServer : public Server

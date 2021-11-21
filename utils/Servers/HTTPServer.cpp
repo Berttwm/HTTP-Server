@@ -7,7 +7,7 @@ void HTTPServer::handler(int &arg)
     read(thread_sock, request_string, 30000); // 30000 is the request_str_len
 
     std::cout << request_string << std::endl;
-
+    HTTP_Request *HR = new HTTP_Request(std::string(request_string));
     std::string msg = "Server response ...";
     write(thread_sock, msg.c_str(), msg.length());
     close(thread_sock);
@@ -38,7 +38,7 @@ void HTTPServer::launch()
             perror("in accept");
             exit(EXIT_FAILURE);
         }
-        // handler methods
+        // handler methods - to abstract into threads
         TP.add_job(std::bind(&HTTPServer::handler, this, new_socket));
         std::cout << "==== HTTP Server Done: ====" << std::endl;
     }
