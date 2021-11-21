@@ -30,6 +30,7 @@ void HTTPServer::responder()
 HTTPServer::HTTPServer()
 : Server(AF_INET, SOCK_STREAM, 0, this->port, INADDR_ANY, this->backlog) // port 80 for HTTP
 {
+    // initiate thread pool:
     get_socket()->start_listening();
     launch();
 }

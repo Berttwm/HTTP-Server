@@ -6,7 +6,7 @@ ThreadPool::ThreadPool()
     num_threads = num_threads = std::thread::hardware_concurrency();
     for(int i = 0; i < num_threads; i++)
     {
-        thread_pool.push_back(std::thread(&ThreadPool::start_thread));
+        thread_pool.push_back(std::thread(&ThreadPool::start_thread,this));
     }
     std::cout << "==== Finished Initializing (number of threads = " << num_threads << ") ThreadPool ====" << std::endl;
 }

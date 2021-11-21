@@ -8,6 +8,9 @@
 class HTTPServer : public Server
 {
 private:
+    /* Thread Pool */
+    ThreadPool TP;
+    
     /* Initialized HTTP config */
     int port = 12346;
     int backlog = 100000;
