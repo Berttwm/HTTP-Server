@@ -6,17 +6,18 @@ HTTP_Request::HTTP_Request(const std::string &content)
     this->extract(content);
 }
 
-Method HTTP_Request::get_method()
+const Method HTTP_Request::get_method() const
 {
     return m_method;
 }
 
-std::string HTTP_Request::get_uri()
+const std::string HTTP_Request::get_uri() const
 {
+    if(m_uri == "/") return m_root_file_name;
     return m_uri;
 }
 
-std::string HTTP_Request::get_header(const std::string &key)
+const std::string HTTP_Request::get_header(const std::string &key) const
 {
     auto res = m_misc_headers.find(key);
     if (res == m_misc_headers.end()) {
@@ -87,8 +88,13 @@ void HTTP_Request::extract(const std::string &content)
         pos_prev = pos_curr;
 
         m_misc_headers.insert(std::make_pair(key, value));
-        std::cout<< key << "::" << value << std::endl;
     }
     // Completed Extraction
+
+    // debug statement ---
+    // for(auto x: m_misc_headers)
+    // {
+    //     std::cout << x.first << ":" << x.second << std::endl;
+    // }
 
 }

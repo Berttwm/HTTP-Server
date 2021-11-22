@@ -18,15 +18,15 @@ private:
 public:
     HTTP_Request(const std::string &content);
 
-    Method get_method();
-    std::string get_uri();
-    std::string get_header(const std::string &key);
+    const Method get_method() const;
+    const std::string get_uri() const;
+    const std::string get_header(const std::string &key) const;
 
 };
 
 #endif // HTTPTools_Request_H
 
-
+/* The request I am basing my protocol on */
 // GET / HTTP/1.1
 // Host: 127.0.0.1:12346
 // User-Agent: Mozilla/5.0 (X11; U; SunOS sun4v; en-US; rv:1.7) Gecko/20140814

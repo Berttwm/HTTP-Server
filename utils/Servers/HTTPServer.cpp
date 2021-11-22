@@ -7,8 +7,19 @@ void HTTPServer::handler(int &arg)
     read(thread_sock, request_string, 30000); // 30000 is the request_str_len
 
     std::cout << request_string << std::endl;
-    HTTP_Request *HR = new HTTP_Request(std::string(request_string));
-    std::string msg = "Server response ...";
+    HTTP_Request *HReq = new HTTP_Request(std::string(request_string));
+
+    // HTTP 1.1 only handles GET method at the moment
+    std::string msg;
+    if(HReq->get_method() != Method::GET) {
+         msg = "HTTP/1.1 405 Method not Allowed\r\nAllow: GET\r\n\r\n";
+    } else {
+        // Successful HTTP/1.1 GET request found
+        HTTP_Response *HResp = new HTTP_Response(HTTPServer::m_directory);
+        msg = HResp->write_responses(*HReq);
+        msg = "Server successful ...";
+
+    }
     write(thread_sock, msg.c_str(), msg.length());
     close(thread_sock);
 }

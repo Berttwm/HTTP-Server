@@ -5,10 +5,11 @@
 #include "Servers/HTTPServer.h"
 #include "Servers/HTTP_Tools/HTTP_Info.h"
 #include "Servers/HTTP_Tools/HTTP_Request.h"
+#include "Servers/HTTP_Tools/HTTP_Response.h"
 
 #include "Servers/Server.cpp"
 #include "Servers/HTTPServer.cpp"
 #include "Servers/HTTP_Tools/HTTP_Request.cpp"
-
+#include "Servers/HTTP_Tools/HTTP_Response.cpp"
 
 #endif // Lib_servers_H
