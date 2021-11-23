@@ -21,8 +21,7 @@ const std::string HTTP_Request::get_header(const std::string &key) const
 {
     auto res = m_misc_headers.find(key);
     if (res == m_misc_headers.end()) {
-        perror("HTTP Headers has no value associated with this given key");
-        exit(EXIT_FAILURE);
+        return "";
     }
     return res->second;
 }
