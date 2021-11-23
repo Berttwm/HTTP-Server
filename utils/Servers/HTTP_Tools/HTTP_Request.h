@@ -22,6 +22,9 @@ public:
     const std::string get_uri() const;
     const std::string get_header(const std::string &key) const;
 
+    // auxilary method for client
+    static std::string generate_HTTP_Request();
+
 };
 
 #endif // HTTPTools_Request_H

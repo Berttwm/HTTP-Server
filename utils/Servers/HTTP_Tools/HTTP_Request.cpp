@@ -97,3 +97,59 @@ void HTTP_Request::extract(const std::string &content)
     // }
 
 }
+// special method for client - generate a generic HTTP stream
+std::string HTTP_Request::generate_HTTP_Request()
+{
+    std::string response;
+
+    /* HTTP_Response creation */
+    // step 1: HTTP GET header 
+    response.append("GET");
+    response.append(" ");
+    response.append("/");
+    response.append(" ");
+    response.append(HTTP_VERSION);
+    response.append(LINE_ENDING);
+
+    // step 2: HTTP Host header 
+    response.append("Host: ");
+    response.append("127.0.0.1:12346");
+    response.append(LINE_ENDING);
+
+    // step 3: HTTP User-Agent
+    response.append("User-Agent: ");
+    response.append("Mozilla/5.0 (X11; U; SunOS sun4v; en-US; rv:1.7) Gecko/20140814");
+    response.append(LINE_ENDING);
+
+    // step 4: HTTP Accept header 
+    response.append("ccept: ");
+    response.append("text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5");
+    response.append(LINE_ENDING);
+
+    // step 5: HTTP Accept-Language header
+    response.append("Accept-Language: ");
+    response.append("en-us,en;q=0.5");
+    response.append(LINE_ENDING);
+
+    // step 6: Accept-Encoding heading
+    response.append("Accept-Encoding: ");
+    response.append("gzip,deflate");
+    response.append(LINE_ENDING);
+    
+    // step 7: Accept-Charset heading
+    response.append("Accept-Charset: ");
+    response.append("ISO-8859-1,utf-8;q=0.7,*;q=0.7");
+    response.append(LINE_ENDING);
+
+    // step 8: Keep-Alive heading
+    response.append("Keep-Alive: ");
+    response.append("300");
+    response.append(LINE_ENDING);
+
+    // step 9: Connection heading
+    response.append("Connection: ");
+    response.append("keep-alive");
+    response.append(LINE_ENDING);
+
+    return response;
+}

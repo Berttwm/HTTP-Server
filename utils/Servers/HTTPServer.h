@@ -7,14 +7,12 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <netinet/tcp.h>
+#include <signal.h>
 
 
 #include "Server.h"
 #include "HTTP_Tools/HTTP_Request.h"
 #include "HTTP_Tools/HTTP_Response.h"
-#include<signal.h>
-
-
 
 class HTTPServer : public Server
 {

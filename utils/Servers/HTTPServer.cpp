@@ -22,7 +22,7 @@ void HTTPServer::handler(int &arg)
             // continue;
         }
 
-        // std::cout << request_string << std::endl;
+        std::cout << "Server has received a message!" << std::endl;
         HTTP_Request *HReq = new HTTP_Request(std::string(request_string));
         // // detect for keep-alive connections
         std::string connection_header = HReq->get_header(this->Connection_str);
@@ -61,7 +61,7 @@ void HTTPServer::launch()
 {
     while(true)
     {
-        std::cout << "==== HTTP Server Waiting: ====" << std::endl;
+        std::cout << "==== HTTP Server Waiting on port:" << HTTP_Port << "====" << std::endl;
         // acceptor method
         int new_socket;
         Socket *curr_socket = this->get_socket();
