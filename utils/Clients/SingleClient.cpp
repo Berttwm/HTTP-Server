@@ -16,13 +16,15 @@ void SingleClient::launch() {
         perror("Cient write failure");
         exit(EXIT_FAILURE);
     }
+    std::cout << "Client has sent standard HTTP message" << std::endl;
+
     if(read(get_socket()->get_sock(), buffer, 30000) < 0)
     {
         perror("Cient read failure");
         exit(EXIT_FAILURE);
     }
 
-    std::cout << "Client has sent standard HTTP message" << std::endl;
-
+    std::cout << "Client has received from the server:" << std::endl;
+    std::cout << buffer << std::endl;
 
 }
